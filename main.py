@@ -1,5 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
+from ball import Ball
+import time
 
 
 screen = Screen()
@@ -10,6 +12,7 @@ screen.tracer(0)  # turn off the animation, needs manually update the screen lat
 
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
+ball = Ball()
 
 screen.listen()
 screen.onkey(r_paddle.go_up, "Up")
@@ -21,6 +24,8 @@ screen.onkey(l_paddle.go_down, "s")  # same above
 game_is_on = True
 
 while game_is_on:
+    time.sleep(0.1)  # have the ball to move every refresh of the screen
     screen.update()
+    ball.move()
 
 screen.exitonclick()
